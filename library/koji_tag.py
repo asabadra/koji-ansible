@@ -569,20 +569,19 @@ def delete_tag(session, name, check_mode):
 
 def run_module():
     module_args = dict(
-        koji=dict(required=False),
+        koji=dict(),
         name=dict(required=True),
-        state=dict(choices=['present', 'absent'], required=False,
-                   default='present'),
-        inheritance=dict(type='raw', required=False, default=None),
-        external_repos=dict(type='raw', required=False, default=None),
-        packages=dict(type='raw', required=False, default=None),
-        groups=dict(type='raw', required=False, default=None),
-        arches=dict(required=False, default=None),
-        perm=dict(required=False, default=None),
-        locked=dict(type='bool', required=False, default=False),
-        maven_support=dict(type='bool', required=False, default=False),
-        maven_include_all=dict(type='bool', required=False, default=False),
-        extra=dict(type='dict', required=False, default=None),
+        state=dict(choices=['present', 'absent'], default='present'),
+        inheritance=dict(type='raw', default=None),
+        external_repos=dict(type='raw', default=None),
+        packages=dict(type='raw', default=None),
+        groups=dict(type='raw', default=None),
+        arches=dict(default=None),
+        perm=dict(default=None),
+        locked=dict(type='bool', default=False),
+        maven_support=dict(type='bool', default=False),
+        maven_include_all=dict(type='bool', default=False),
+        extra=dict(type='dict', default=None),
     )
     module = AnsibleModule(
         argument_spec=module_args,
